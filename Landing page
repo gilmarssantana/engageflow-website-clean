@@ -1,22 +1,7 @@
-# Adicionar todos os arquivos
-git add .
+# Criar pasta local
+mkdir engageflow-website-clean
+cd engageflow-website-clean
 
-# Verificar status
-git status
-
-# Fazer commit
-git commit -m "feat: Implementa landing page EngageFlow completa
-
-- Landing page responsiva com design profissional
-- Estrutura React + Vite + shadcn/ui
-- SEO otimizado e meta tags completas
-- Build testado e funcionando (249KB otimizado)
-- Pronto para deploy Vercel"
-
-# Conectar com repositório GitHub
-git remote add origin https://github.com/gilmarssantana/engageflow-website-clean.git
-
-# Fazer push
-git push -u origin main
-                   
-     
+# Inicializar Git
+git init
+git branch -M main
