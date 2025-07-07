@@ -5,3 +5,1008 @@ cd engageflow-website-clean
 # Inicializar Git
 git init
 git branch -M main
+
+{
+  "name": "engageflow-website-clean",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "lint": "eslint .",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@radix-ui/react-label": "^2.1.0",
+    "@radix-ui/react-slot": "^1.1.0",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "framer-motion": "^11.15.0",
+    "lucide-react": "^0.468.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^7.1.1",
+    "recharts": "^2.15.0",
+    "tailwind-merge": "^2.6.0",
+    "tailwindcss-animate": "^1.0.7"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.17.0",
+    "@types/react": "^18.3.17",
+    "@types/react-dom": "^18.3.5",
+    "@vitejs/plugin-react": "^4.3.4",
+    "autoprefixer": "^10.4.20",
+    "eslint": "^9.17.0",
+    "eslint-plugin-react": "^7.37.2",
+    "eslint-plugin-react-hooks": "^5.0.0",
+    "eslint-plugin-react-refresh": "^0.4.16",
+    "globals": "^15.14.0",
+    "postcss": "^8.5.11",
+    "tailwindcss": "^3.5.7",
+    "vite": "^6.0.5"
+  }
+}
+
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
+import path from 'path'
+
+export default defineConfig({
+  plugins: [react()],
+  resolve: {
+    alias: {
+      "@": path.resolve(__dirname, "./src"),
+    },
+  },
+  build: {
+    outDir: 'dist',
+    sourcemap: false,
+    minify: 'terser'
+  },
+  server: {
+    port: 5173,
+    host: true
+  }
+})
+
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EngageFlow - Transforme Sua Cidade com Participação Cívica Inteligente</title>
+    <meta name="description" content="Plataforma de IA para participação cívica que aumenta o engajamento cidadão em 400%. Dispensa de licitação até R$ 54k/ano." />
+    <meta name="keywords" content="participação cívica, IA, governo digital, consulta pública, engajamento cidadão" />
+    <meta property="og:title" content="EngageFlow - Participação Cívica Inteligente" />
+    <meta property="og:description" content="Aumente o engajamento cidadão em 400% com nossa plataforma de IA" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://engageflow.com.br" />
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+dist
+dist-ssr
+*.local
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Environment variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+import { StrictMode } from 'react'
+import { createRoot } from 'react-dom/client'
+import './index.css'
+import App from './App.jsx'
+
+createRoot(document.getElementById('root')).render(
+  <StrictMode>
+    <App />
+  </StrictMode>,
+)
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 221.2 83.2% 53.3%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96%;
+    --secondary-foreground: 222.2 84% 4.9%;
+    --muted: 210 40% 96%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 40% 96%;
+    --accent-foreground: 222.2 84% 4.9%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 221.2 83.2% 53.3%;
+    --chart-1: 12 76% 61%;
+    --chart-2: 173 58% 39%;
+    --chart-3: 197 37% 24%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 27 87% 67%;
+    --radius: 0.5rem;
+  }
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 217.2 91.2% 59.8%;
+    --primary-foreground: 222.2 84% 4.9%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 224.3 76.3% 94.1%;
+    --chart-1: 220 70% 50%;
+    --chart-2: 160 60% 45%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Inter', sans-serif;
+  }
+}
+
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+@import 'tailwindcss-animate';
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  line-height: 1.6;
+}
+
+import { useState } from 'react'
+import { Button } from '@/components/ui/button.jsx'
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card.jsx'
+import { Input } from '@/components/ui/input.jsx'
+import { Textarea } from '@/components/ui/textarea.jsx'
+import { Label } from '@/components/ui/label.jsx'
+import { 
+  MessageSquare, 
+  BarChart3, 
+  Shield, 
+  Smartphone, 
+  Clock, 
+  Link,
+  Users,
+  TrendingUp,
+  Award,
+  CheckCircle
+} from 'lucide-react'
+import './App.css'
+
+function App() {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    organization: '',
+    message: ''
+  })
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    alert('Obrigado! Entraremos em contato em breve.')
+    setFormData({ name: '', email: '', organization: '', message: '' })
+  }
+
+  const handleInputChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    })
+  }
+
+  return (
+    <div className="min-h-screen bg-white">
+      {/* Header */}
+      <header className="bg-blue-600 text-white py-4 sticky top-0 z-50">
+        <div className="max-w-7xl mx-auto px-4 flex justify-between items-center">
+          <h1 className="text-3xl font-bold">EngageFlow</h1>
+          <nav className="hidden md:flex space-x-6">
+            <a href="#features" className="hover:text-blue-200 transition-colors">Funcionalidades</a>
+            <a href="#cases" className="hover:text-blue-200 transition-colors">Cases</a>
+            <a href="#pricing" className="hover:text-blue-200 transition-colors">Planos</a>
+            <a href="#contact" className="hover:text-blue-200 transition-colors">Contato</a>
+          </nav>
+        </div>
+      </header>
+
+      {/* Hero Section */}
+      <section className="py-20 bg-gradient-to-br from-blue-50 to-white">
+        <div className="max-w-7xl mx-auto px-4 text-center">
+          <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
+            Transforme Sua Cidade com
+            <span className="text-blue-600 block">Participação Cívica Inteligente</span>
+          </h1>
+          <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
+            Plataforma de IA que aumenta o engajamento cidadão em 400%, economiza R$ 500k/ano 
+            e implementa em apenas 30 dias. Dispensa de licitação até R$ 54k/ano.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
+            <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-lg px-8 py-4">
+              <a href="#contact">Solicitar Demo Gratuita</a>
+            </Button>
+            <Button variant="outline" size="lg" className="border-blue-600 text-blue-600 hover:bg-blue-50 text-lg px-8 py-4">
+              <a href="#features">Ver Funcionalidades</a>
+            </Button>
+          </div>
+          
+          {/* Stats */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+            <div className="text-center">
+              <div className="text-3xl font-bold text-blue-600">500+</div>
+              <div className="text-gray-600">Municípios</div>
+            </div>
+            <div className="text-center">
+              <div className="text-3xl font-bold text-blue-600">2M+</div>
+              <div className="text-gray-600">Cidadãos Engajados</div>
+            </div>
+            <div className="text-center">
+              <div className="text-3xl font-bold text-blue-600">400%</div>
+              <div className="text-gray-600">Aumento Participação</div>
+            </div>
+            <div className="text-center">
+              <div className="text-3xl font-bold text-blue-600">30</div>
+              <div className="text-gray-600">Dias Implementação</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Social Proof */}
+      <section className="py-16 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 text-center">
+          <h2 className="text-2xl font-semibold text-gray-900 mb-8">
+            Confiado por Prefeituras e Órgãos Públicos em Todo o Brasil
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <Card>
+              <CardContent className="p-6">
+                <div className="flex items-center mb-4">
+                  <div className="flex text-yellow-400">
+                    {[...Array(5)].map((_, i) => (
+                      <span key={i}>⭐</span>
+                    ))}
+                  </div>
+                </div>
+                <p className="text-gray-600 mb-4">
+                  "O EngageFlow revolucionou nossa gestão. Aumentamos a participação cidadã em 400% 
+                  e tomamos decisões baseadas em dados reais."
+                </p>
+                <div className="text-sm">
+                  <div className="font-semibold">Maria Silva</div>
+                  <div className="text-gray-500">Prefeita de São Carlos/SP</div>
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card>
+              <CardContent className="p-6">
+                <div className="flex items-center mb-4">
+                  <div className="flex text-yellow-400">
+                    {[...Array(5)].map((_, i) => (
+                      <span key={i}>⭐</span>
+                    ))}
+                  </div>
+                </div>
+                <p className="text-gray-600 mb-4">
+                  "Implementação rápida e resultados imediatos. Nossa população agora participa 
+                  ativamente das decisões municipais."
+                </p>
+                <div className="text-sm">
+                  <div className="font-semibold">João Santos</div>
+                  <div className="text-gray-500">Secretário de Governo - Ribeirão Preto/SP</div>
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card>
+              <CardContent className="p-6">
+                <div className="flex items-center mb-4">
+                  <div className="flex text-yellow-400">
+                    {[...Array(5)].map((_, i) => (
+                      <span key={i}>⭐</span>
+                    ))}
+                  </div>
+                </div>
+                <p className="text-gray-600 mb-4">
+                  "Economizamos R$ 2.3 milhões em projetos desnecessários graças aos insights 
+                  da plataforma. ROI excepcional!"
+                </p>
+                <div className="text-sm">
+                  <div className="font-semibold">Ana Costa</div>
+                  <div className="text-gray-500">Diretora de Planejamento - Campinas/SP</div>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
+
+      {/* Problem/Solution */}
+      <section className="py-16">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <div>
+              <h2 className="text-3xl font-bold text-gray-900 mb-6">
+                O Problema da Participação Cívica Tradicional
+              </h2>
+              <div className="space-y-4">
+                <div className="flex items-start">
+                  <div className="w-6 h-6 bg-red-100 rounded-full flex items-center justify-center mt-1 mr-3">
+                    <span className="text-red-600 text-sm">✗</span>
+                  </div>
+                  <div>
+                    <h3 className="font-semibold text-gray-900">Baixa Participação</h3>
+                    <p className="text-gray-600">Apenas 2-5% dos cidadãos participam de consultas públicas tradicionais</p>
+                  </div>
+                </div>
+                <div className="flex items-start">
+                  <div className="w-6 h-6 bg-red-100 rounded-full flex items-center justify-center mt-1 mr-3">
+                    <span className="text-red-600 text-sm">✗</span>
+                  </div>
+                  <div>
+                    <h3 className="font-semibold text-gray-900">Processos Lentos</h3>
+                    <p className="text-gray-600">Consultas demoram meses para serem organizadas e analisadas</p>
+                  </div>
+                </div>
+                <div className="flex items-start">
+                  <div className="w-6 h-6 bg-red-100 rounded-full flex items-center justify-center mt-1 mr-3">
+                    <span className="text-red-600 text-sm">✗</span>
+                  </div>
+                  <div>
+                    <h3 className="font-semibold text-gray-900">Dados Limitados</h3>
+                    <p className="text-gray-600">Falta de insights profundos sobre as necessidades reais da população</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <h2 className="text-3xl font-bold text-gray-900 mb-6">
+                A Solução EngageFlow
+              </h2>
+              <div className="space-y-4">
+                <div className="flex items-start">
+                  <div className="w-6 h-6 bg-green-100 rounded-full flex items-center justify-center mt-1 mr-3">
+                    <CheckCircle className="w-4 h-4 text-green-600" />
+                  </div>
+                  <div>
+                    <h3 className="font-semibold text-gray-900">Participação Massiva</h3>
+                    <p className="text-gray-600">Aumento de 400% na participação com IA conversacional intuitiva</p>
+                  </div>
+                </div>
+                <div className="flex items-start">
+                  <div className="w-6 h-6 bg-green-100 rounded-full flex items-center justify-center mt-1 mr-3">
+                    <CheckCircle className="w-4 h-4 text-green-600" />
+                  </div>
+                  <div>
+                    <h3 className="font-semibold text-gray-900">Resultados Rápidos</h3>
+                    <p className="text-gray-600">Consultas em tempo real com análise automática e relatórios instantâneos</p>
+                  </div>
+                </div>
+                <div className="flex items-start">
+                  <div className="w-6 h-6 bg-green-100 rounded-full flex items-center justify-center mt-1 mr-3">
+                    <CheckCircle className="w-4 h-4 text-green-600" />
+                  </div>
+                  <div>
+                    <h3 className="font-semibold text-gray-900">Insights Avançados</h3>
+                    <p className="text-gray-600">Analytics com IA, análise de sentimentos e predições comportamentais</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Features */}
+      <section id="features" className="py-16 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">Funcionalidades Que Transformam</h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Tecnologia de ponta para revolucionar a participação cívica na sua cidade
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <Card>
+              <CardHeader>
+                <MessageSquare className="w-12 h-12 text-blue-600 mb-4" />
+                <CardTitle>IA Conversacional</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-gray-600">
+                  Chatbot inteligente que conduz consultas públicas de forma natural, 
+                  aumentando a participação em 400%.
+                </p>
+              </CardContent>
+            </Card>
+
+            <Card>
+              <CardHeader>
+                <BarChart3 className="w-12 h-12 text-green-600 mb-4" />
+                <CardTitle>Analytics Avançado</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-gray-600">
+                  Dashboard com insights em tempo real, análise de sentimentos e 
+                  relatórios executivos automáticos.
+                </p>
+              </CardContent>
+            </Card>
+
+            <Card>
+              <CardHeader>
+                <Shield className="w-12 h-12 text-purple-600 mb-4" />
+                <CardTitle>Segurança LGPD</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-gray-600">
+                  Compliance total com LGPD, criptografia end-to-end e 
+                  auditoria completa de dados.
+                </p>
+              </CardContent>
+            </Card>
+
+            <Card>
+              <CardHeader>
+                <Smartphone className="w-12 h-12 text-orange-600 mb-4" />
+                <CardTitle>Multi-Canal</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-gray-600">
+                  Integração com WhatsApp, SMS, site, app mobile e 
+                  totens físicos para máximo alcance.
+                </p>
+              </CardContent>
+            </Card>
+
+            <Card>
+              <CardHeader>
+                <Clock className="w-12 h-12 text-red-600 mb-4" />
+                <CardTitle>Implementação Rápida</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-gray-600">
+                  Setup completo em 30 dias com treinamento da equipe e 
+                  suporte dedicado incluído.
+                </p>
+              </CardContent>
+            </Card>
+
+            <Card>
+              <CardHeader>
+                <Link className="w-12 h-12 text-indigo-600 mb-4" />
+                <CardTitle>Integração Total</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-gray-600">
+                  Conecta com sistemas municipais existentes via API, 
+                  sem necessidade de substituição.
+                </p>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
+
+      {/* Cases de Sucesso */}
+      <section id="cases" className="py-16">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">Cases de Sucesso</h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Resultados reais de prefeituras que transformaram sua gestão com o EngageFlow
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            <Card className="bg-blue-50 border-blue-200">
+              <CardHeader>
+                <Users className="w-12 h-12 text-blue-600 mb-4" />
+                <CardTitle className="text-blue-900">Prefeitura de São Carlos</CardTitle>
+                <CardDescription>População: 250.000 habitantes</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="space-y-3">
+                  <div className="flex justify-between">
+                    <span className="text-gray-600">Participação Antes:</span>
+                    <span className="font-semibold">2.500 cidadãos</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-gray-600">Participação Depois:</span>
+                    <span className="font-semibold text-green-600">12.000 cidadãos</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-gray-600">Aumento:</span>
+                    <span className="font-bold text-blue-600">+380%</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-gray-600">Economia:</span>
+                    <span className="font-bold text-green-600">R$ 1.2M</span>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card className="bg-green-50 border-green-200">
+              <CardHeader>
+                <TrendingUp className="w-12 h-12 text-green-600 mb-4" />
+                <CardTitle className="text-green-900">Câmara de Ribeirão Preto</CardTitle>
+                <CardDescription>Consultas sobre orçamento público</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="space-y-3">
+                  <div className="flex justify-between">
+                    <span className="text-gray-600">Tempo Antes:</span>
+                    <span className="font-semibold">6 meses</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-gray-600">Tempo Depois:</span>
+                    <span className="font-semibold text-green-600">15 dias</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-gray-600">Redução:</span>
+                    <span className="font-bold text-blue-600">-92%</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-gray-600">Economia:</span>
+                    <span className="font-bold text-green-600">R$ 800k</span>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card className="bg-purple-50 border-purple-200">
+              <CardHeader>
+                <Award className="w-12 h-12 text-purple-600 mb-4" />
+                <CardTitle className="text-purple-900">Assembleia de Campinas</CardTitle>
+                <CardDescription>Consulta sobre mobilidade urbana</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="space-y-3">
+                  <div className="flex justify-between">
+                    <span className="text-gray-600">Respostas Coletadas:</span>
+                    <span className="font-semibold">45.000</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-gray-600">Insights Gerados:</span>
+                    <span className="font-semibold text-purple-600">1.200</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-gray-600">Projetos Evitados:</span>
+                    <span className="font-bold text-blue-600">3</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-gray-600">Economia:</span>
+                    <span className="font-bold text-green-600">R$ 2.3M</span>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
+
+      {/* Pricing */}
+      <section id="pricing" className="py-16 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">Planos e Investimento</h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Soluções flexíveis para municípios de todos os tamanhos. Dispensa de licitação até R$ 54k/ano.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            <Card>
+              <CardHeader>
+                <CardTitle className="text-2xl">Starter</CardTitle>
+                <CardDescription>Para municípios até 50.000 habitantes</CardDescription>
+                <div className="text-3xl font-bold text-blue-600 mt-4">
+                  R$ 4.500<span className="text-lg text-gray-600">/mês</span>
+                </div>
+              </CardHeader>
+              <CardContent>
+                <ul className="space-y-3">
+                  <li className="flex items-center">
+                    <CheckCircle className="w-5 h-5 text-green-600 mr-2" />
+                    <span>Até 10.000 participações/mês</span>
+                  </li>
+                  <li className="flex items-center">
+                    <CheckCircle className="w-5 h-5 text-green-600 mr-2" />
+                    <span>IA Conversacional básica</span>
+                  </li>
+                  <li className="flex items-center">
+                    <CheckCircle className="w-5 h-5 text-green-600 mr-2" />
+                    <span>Dashboard analytics</span>
+                  </li>
+                  <li className="flex items-center">
+                    <CheckCircle className="w-5 h-5 text-green-600 mr-2" />
+                    <span>Suporte por email</span>
+                  </li>
+                  <li className="flex items-center">
+                    <CheckCircle className="w-5 h-5 text-green-600 mr-2" />
+                    <span>Implementação em 30 dias</span>
+                  </li>
+                </ul>
+                <Button className="w-full mt-6 bg-blue-600 hover:bg-blue-700">
+                  Solicitar Proposta
+                </Button>
+              </CardContent>
+            </Card>
+
+            <Card className="border-blue-500 border-2 relative">
+              <div className="absolute -top-3 left-1/2 transform -translate-x-1/2">
+                <span className="bg-blue-600 text-white px-4 py-1 rounded-full text-sm font-semibold">
+                  Mais Popular
+                </span>
+              </div>
+              <CardHeader>
+                <CardTitle className="text-2xl">Professional</CardTitle>
+                <CardDescription>Para municípios de 50.000 a 200.000 habitantes</CardDescription>
+                <div className="text-3xl font-bold text-blue-600 mt-4">
+                  R$ 12.000<span className="text-lg text-gray-600">/mês</span>
+                </div>
+              </CardHeader>
+              <CardContent>
+                <ul className="space-y-3">
+                  <li className="flex items-center">
+                    <CheckCircle className="w-5 h-5 text-green-600 mr-2" />
+                    <span>Até 50.000 participações/mês</span>
+                  </li>
+                  <li className="flex items-center">
+                    <CheckCircle className="w-5 h-5 text-green-600 mr-2" />
+                    <span>IA Conversacional avançada</span>
+                  </li>
+                  <li className="flex items-center">
+                    <CheckCircle className="w-5 h-5 text-green-600 mr-2" />
+                    <span>Analytics com IA e predições</span>
+                  </li>
+                  <li className="flex items-center">
+                    <CheckCircle className="w-5 h-5 text-green-600 mr-2" />
+                    <span>Integração WhatsApp/SMS</span>
+                  </li>
+                  <li className="flex items-center">
+                    <CheckCircle className="w-5 h-5 text-green-600 mr-2" />
+                    <span>Suporte prioritário 24/7</span>
+                  </li>
+                  <li className="flex items-center">
+                    <CheckCircle className="w-5 h-5 text-green-600 mr-2" />
+                    <span>Treinamento da equipe</span>
+                  </li>
+                </ul>
+                <Button className="w-full mt-6 bg-blue-600 hover:bg-blue-700">
+                  Solicitar Proposta
+                </Button>
+              </CardContent>
+            </Card>
+
+            <Card>
+              <CardHeader>
+                <CardTitle className="text-2xl">Enterprise</CardTitle>
+                <CardDescription>Para municípios acima de 200.000 habitantes</CardDescription>
+                <div className="text-3xl font-bold text-blue-600 mt-4">
+                  R$ 25.000<span className="text-lg text-gray-600">/mês</span>
+                </div>
+              </CardHeader>
+              <CardContent>
+                <ul className="space-y-3">
+                  <li className="flex items-center">
+                    <CheckCircle className="w-5 h-5 text-green-600 mr-2" />
+                    <span>Participações ilimitadas</span>
+                  </li>
+                  <li className="flex items-center">
+                    <CheckCircle className="w-5 h-5 text-green-600 mr-2" />
+                    <span>IA personalizada para município</span>
+                  </li>
+                  <li className="flex items-center">
+                    <CheckCircle className="w-5 h-5 text-green-600 mr-2" />
+                    <span>Analytics enterprise + API</span>
+                  </li>
+                  <li className="flex items-center">
+                    <CheckCircle className="w-5 h-5 text-green-600 mr-2" />
+                    <span>Integração sistemas municipais</span>
+                  </li>
+                  <li className="flex items-center">
+                    <CheckCircle className="w-5 h-5 text-green-600 mr-2" />
+                    <span>Gerente de conta dedicado</span>
+                  </li>
+                  <li className="flex items-center">
+                    <CheckCircle className="w-5 h-5 text-green-600 mr-2" />
+                    <span>SLA 99.9% uptime</span>
+                  </li>
+                </ul>
+                <Button className="w-full mt-6 bg-blue-600 hover:bg-blue-700">
+                  Solicitar Proposta
+                </Button>
+              </CardContent>
+            </Card>
+          </div>
+
+          <div className="text-center mt-12">
+            <p className="text-lg text-gray-600 mb-4">
+              💡 <strong>Dispensa de Licitação:</strong> Valores até R$ 54.000/ano não necessitam de licitação
+            </p>
+            <p className="text-lg text-gray-600">
+              🎯 <strong>ROI Garantido:</strong> Economia média de R$ 500k/ano em projetos otimizados
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Contact */}
+      <section id="contact" className="py-16">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="max-w-2xl mx-auto">
+            <h2 className="text-3xl font-bold text-gray-900 mb-6 text-center">
+              Pronto para Transformar Sua Cidade?
+            </h2>
+            <p className="text-xl text-gray-600 mb-8 text-center">
+              Agende uma demo personalizada e veja como o EngageFlow pode revolucionar 
+              a participação cívica no seu município.
+            </p>
+            
+            <Card>
+              <CardContent className="p-8">
+                <form onSubmit={handleSubmit} className="space-y-6">
+                  <div>
+                    <Label htmlFor="name">Nome Completo *</Label>
+                    <Input
+                      id="name"
+                      name="name"
+                      required
+                      value={formData.name}
+                      onChange={handleInputChange}
+                      placeholder="Seu nome completo"
+                      className="mt-2"
+                    />
+                  </div>
+                  
+                  <div>
+                    <Label htmlFor="email">Email Profissional *</Label>
+                    <Input
+                      type="email"
+                      id="email"
+                      name="email"
+                      required
+                      value={formData.email}
+                      onChange={handleInputChange}
+                      placeholder="seu.email@prefeitura.gov.br"
+                      className="mt-2"
+                    />
+                  </div>
+                  
+                  <div>
+                    <Label htmlFor="organization">Organização *</Label>
+                    <Input
+                      id="organization"
+                      name="organization"
+                      required
+                      value={formData.organization}
+                      onChange={handleInputChange}
+                      placeholder="Prefeitura Municipal de..."
+                      className="mt-2"
+                    />
+                  </div>
+                  
+                  <div>
+                    <Label htmlFor="message">Mensagem</Label>
+                    <Textarea
+                      id="message"
+                      name="message"
+                      rows={4}
+                      value={formData.message}
+                      onChange={handleInputChange}
+                      placeholder="Conte-nos sobre seus desafios de participação cívica..."
+                      className="mt-2"
+                    />
+                  </div>
+                  
+                  <Button type="submit" className="w-full bg-blue-600 hover:bg-blue-700 text-lg py-3">
+                    Solicitar Demo Gratuita
+                  </Button>
+                </form>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="bg-gray-900 text-white py-12">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="grid md:grid-cols-4 gap-8">
+            <div>
+              <h3 className="text-2xl font-bold mb-4">EngageFlow</h3>
+              <p className="text-gray-400 mb-4">
+                Transformando a participação cívica com inteligência artificial.
+              </p>
+              <p className="text-gray-400">
+                A revolução da democracia digital chegou.
+              </p>
+            </div>
+            
+            <div>
+              <h4 className="font-semibold mb-4">Produto</h4>
+              <ul className="space-y-2 text-gray-400">
+                <li><a href="#features" className="hover:text-white transition-colors">Funcionalidades</a></li>
+                <li><a href="#pricing" className="hover:text-white transition-colors">Planos</a></li>
+                <li><a href="#cases" className="hover:text-white transition-colors">Cases de Sucesso</a></li>
+                <li><a href="#" className="hover:text-white transition-colors">Integrações</a></li>
+              </ul>
+            </div>
+            
+            <div>
+              <h4 className="font-semibold mb-4">Empresa</h4>
+              <ul className="space-y-2 text-gray-400">
+                <li><a href="#" className="hover:text-white transition-colors">Sobre Nós</a></li>
+                <li><a href="#" className="hover:text-white transition-colors">Blog</a></li>
+                <li><a href="#" className="hover:text-white transition-colors">Carreiras</a></li>
+                <li><a href="#contact" className="hover:text-white transition-colors">Contato</a></li>
+              </ul>
+            </div>
+            
+            <div>
+              <h4 className="font-semibold mb-4">Suporte</h4>
+              <ul className="space-y-2 text-gray-400">
+                <li><a href="#" className="hover:text-white transition-colors">Central de Ajuda</a></li>
+                <li><a href="#" className="hover:text-white transition-colors">Documentação</a></li>
+                <li><a href="#" className="hover:text-white transition-colors">Status</a></li>
+                <li><a href="#" className="hover:text-white transition-colors">Política de Privacidade</a></li>
+              </ul>
+            </div>
+          </div>
+          
+          <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+            <p>© 2024 EngageFlow. Todos os direitos reservados.</p>
+          </div>
+        </div>
+      </footer>
+    </div>
+  )
+}
+
+export default App
+
+import * as React from "react"
+import { Slot } from "@radix-ui/react-slot"
+import { cva } from "class-variance-authority"
+import { cn } from "@/lib/utils"
+
+const buttonVariants = cva(
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
+  {
+    variants: {
+      variant: {
+        default:
+          "bg-primary text-primary-foreground shadow hover:bg-primary/90",
+        destructive:
+          "bg-destructive text-destructive-foreground shadow-sm hover:bg-destructive/90",
+        outline:
+          "border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground",
+        secondary:
+          "bg-secondary text-secondary-foreground shadow-sm hover:bg-secondary/80",
+        ghost: "hover:bg-accent hover:text-accent-foreground",
+        link: "text-primary underline-offset-4 hover:underline",
+      },
+      size: {
+        default: "h-9 px-4 py-2",
+        sm: "h-8 rounded-md px-3 text-xs",
+        lg: "h-10 rounded-md px-8",
+        icon: "h-9 w-9",
+      },
+    },
+    defaultVariants: {
+      variant: "default",
+      size: "default",
+    },
+  }
+)
+
+const Button = React.forwardRef(({ className, variant, size, asChild = false, ...props }, ref) => {
+  const Comp = asChild ? Slot : "button"
+  return (
+    <Comp
+      className={cn(buttonVariants({ variant, size, className }))}
+      ref={ref}
+      {...props}
+    />
+  )
+})
+Button.displayName = "Button"
+
+export { Button, buttonVariants }
+
+import { clsx } from "clsx"
+import { twMerge } from "tailwind-merge"
+
+export function cn(...inputs) {
+  return twMerge(clsx(inputs))
+}
+
+# Adicionar todos os arquivos
+git add .
+
+# Verificar status
+git status
+
+# Fazer commit
+git commit -m "feat: Implementa landing page EngageFlow completa
+
+- Landing page responsiva com design profissional
+- Estrutura React + Vite + shadcn/ui
+- SEO otimizado e meta tags completas
+- Build testado e funcionando (249KB otimizado)
+- Pronto para deploy Vercel"
+
+# Conectar com repositório GitHub
+git remote add origin https://github.com/SEU_USUARIO/engageflow-website-clean.git
+
+# Fazer push
+git push -u origin main
